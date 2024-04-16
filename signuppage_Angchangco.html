@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign-up page</title>
+    <style>
+        body {
+            background-image: url(https://i.pinimg.com/originals/5e/52/18/5e5218550c0ef055747b80954ee01555.gif);
+            background-repeat: no-repeat;
+            background-size: 110%;
+        }
+
+        #loginnabai {
+            border: 3px solid #B5779C;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #B56B6B;
+            color: #C787AD;
+            padding-top: 10px;
+            background-image: linear-gradient(to left, #FFDAF1, lightyellow);
+            margin-top: 3%;
+            margin-left: 30px;
+            margin-right: 20%;
+            margin-bottom: 30%;
+            font-family: fantasy;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        #signup {
+            font-size: 30px;
+            padding: 20px;
+            background-color: #FFE9F7;
+            border: 3px solid #B5779C;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #B56B6B;
+            margin: 0 auto;
+        }
+
+        button {
+            color: #C787AD;
+            font-family: fantasy;
+        }
+
+        input {
+            color: #C787AD;
+            font-family: fantasy;
+        }
+
+        #mgalabel {
+            float: left;
+        }
+
+        #information {
+            border: 3px solid #B5779C;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #B56B6B;
+            color: #C787AD;
+            padding-top: 10px;
+            background-image: linear-gradient(to left, #FFDAF1, lightyellow);
+            font-family: fantasy;
+            font-weight: bold;
+            float: right;
+            margin-left: 20px;
+            margin-top: 4%;
+            margin-right: 60px;
+            margin-bottom: 20%;
+            padding-left: 70px;
+            padding-right: 50px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        
+        }
+
+        span {
+            font-size: 20px;
+        }
+        img{
+        float:right;
+        
+        }
+    </style>
+</head>
+<body>
+    <div id="information">
+        <h5>Your username is! --></h5><span id="user">__</span>
+        <h5>Your password is! --></h5><span id="pass">__</span>
+        <h5>Your email is! --></h5><span id="mail">__</span>
+        <h5>Your gender is! --></h5><span id="gend">__</span>
+        <h5>Your address is! --></h5><span id="addr">__</span>
+        <h5>Your interests are! --></h5><span id="inters">__</span>
+    </div>
+
+    <form onsubmit="return submitFunction();">
+        <fieldset form="login" id="loginnabai">
+            <img src= "asawafrl.jpeg" height= 400px width=350px>
+            <legend id="signup">SIGN-UP</legend>
+            <div id="mgainputs">
+                <label for="username">Username :</label>
+                <input type="text" id="username" class="info" required onblur="noinput(this)" onfocus="yesinput(this)"><br><br>
+                <label for="password">Password :</label>
+                <input type="password" id="password" class="info" required onblur="noinput(this)" onfocus="yesinput(this)"><br><br>
+                <input type="password" placeholder="Confirm Password !" id="confirmpass" required onblur="noinput(this)" onfocus="yesinput(this)" onchange="ConfirmPW()"><br><br>
+                <button type="submit">Confirm</button><br><br>
+
+                <select name="gender" id="genders">
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Prefer not to say :3!">Prefer not to say :3!</option>
+                </select> <br><br>
+
+                <label for="email">Email :</label>
+                <input type="email" id="email" class="info" required onblur="noinput(this)" onfocus="yesinput(this)"><br><br>
+                <label for="address">Address :</label>
+                <input type="address" id="address" class="info" required onblur="noinput(this)" onfocus="yesinput(this)"><br><br>
+                <label for="interests">What are your interests? : </label><br>
+                <textarea id="interests" class="info" rows="4" cols="50"></textarea><br>
+
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset" onclick="resetForm()">
+            </div>
+        </fieldset>
+    </form>
+
+    <script>
+        function noinput(info) {
+            if (info.value.trim() == "") {
+                info.style.border = "2px solid red";
+            }
+        }
+
+        function yesinput(info) {
+            info.style.border = "2px solid green";
+        }
+
+        function ConfirmPW() {
+            var H = document.getElementById("password").value;
+            var I = document.getElementById("confirmpass").value;
+            if (H != I) {
+                alert("Passwords don't match! Please try again.");
+            } else {
+                alert("Nice password dude :3");
+            }
+        }
+
+        function submitFunction() {
+            var x = document.getElementById("username").value;
+            var y = document.getElementById("password").value;
+            var z = document.getElementById("email").value;
+            var a = document.getElementById("address").value;
+            var b = document.getElementById("interests").value;
+            var c = document.getElementById("genders").value;
+
+            document.getElementById("user").innerHTML = x;
+            document.getElementById("pass").innerHTML = y;
+            document.getElementById("gend").innerHTML = c;
+            document.getElementById("mail").innerHTML = z;
+            document.getElementById("addr").innerHTML = a;
+            document.getElementById("inters").innerHTML = b;
+
+            return false;
+        }
+
+        function resetForm() {
+            document.getElementById("username").value = "";
+            document.getElementById("password").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("address").value = "";
+            document.getElementById("interests").value = "";
+            document.getElementById("confirmpass").value = "";
+
+            document.getElementById("user").innerHTML = "__";
+            document.getElementById("pass").innerHTML = "__";
+            document.getElementById("gend").innerHTML = "__";
+            document.getElementById("mail").innerHTML = "__";
+            document.getElementById("addr").innerHTML = "__";
+            document.getElementById("inters").innerHTML = "__";
+        }
+    </script>
+</body>
+</html>
